@@ -10,7 +10,11 @@ const Header = () => {
   return (
     <div className="flex justify-between bg-pink-300 shadow-lg m-2 rounded-xl ">
       <div className="logo-container flex items-center p-7 ">
-        <img src={LOGO_URL} className="w-13 h-14 rounded-2xl" alt="" />
+        <img
+          src="https://img.freepik.com/free-vector/food-shopping-logo-template-design_460848-10299.jpg"
+          className="w-13 h-14 rounded-2xl"
+          alt=""
+        />
       </div>
 
       <div className="flex items-center ">

@@ -1,37 +1,35 @@
-import { useState, useEffect } from "react";
-import Shimmer from "./Shimmer";
-import { useParams } from "react-router-dom";
-import { MENU_API } from "../utils/constants";
-import useRestaurantMenu from "../utils/useRestaurantMenu";
+// import { useParams } from "react-router-dom"; // import useParams for read `resId`
+// import {
+//   swiggy_menu_api_URL,
+//   IMG_CDN_URL,
+//   ITEM_IMG_CDN_URL,
+//   MENU_ITEM_TYPE_KEY,
+//   RESTAURANT_TYPE_KEY,
+// } from "../utils/constants";
+// import useRestaurantMenu from "../utils/useRestaurantMenu";
+// // imported custom hook useResMenuData which gives restaurant Menu data from swigy api
+// // imported custom hook useOnline which checks user is online or not
 
-const RestaurantMenu = () => {
-  const { resId } = useParams();
+// const RestaurantMenu = () => {
+//   const { resId } = useParams(); // call useParams and get value of restaurant id using object destructuring
+//   const [restaurant, menuItems] = useRestaurantMenu(
+//     swiggy_menu_api_URL,
+//     resId,
+//     RESTAURANT_TYPE_KEY,
+//     MENU_ITEM_TYPE_KEY
+//   );
+//   console.log(menuItems);
 
-  const resInfo = useRestaurantMenu(resId);
+//   // if user is not Online then return UserOffline component
 
-  if (resInfo === null) return <Shimmer />;
+//   return (
+//     <div className="text-center">
+//       <h1 className="font-bold my-10 text-2xl">{restaurant?.name}</h1>
+//       <p className="font-bold text-lg">
+//         {restaurant?.cuisines?.join(" , ")} - {restaurant?.costForTwoMessage}
+//       </p>
+//     </div>
+//   );
+// };
 
-  const { name, cuisines, costForTwoMessage } =
-    resInfo?.cards[0]?.card?.card?.info;
-  const { itemCards } =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-  console.log(itemCards);
-  return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>
-        {cuisines.join(", ")} - {costForTwoMessage}
-      </p>
-      <h2>Menu</h2>
-      <ul>
-        {itemCards.map((item) => (
-          <li key={item.card.info.id}>
-            {item.card.info.name} -{" Rs."}
-            {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-export default RestaurantMenu;
+// export default RestaurantMenu;
