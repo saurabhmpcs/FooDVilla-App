@@ -1,4 +1,5 @@
-import { IMG_CDN_URL } from "../utils/constants";
+import { useContext } from "react";
+import userContext from "../utils/UserContext";
 
 // Restaurant card component: Image, name, cuisine
 const RestaurantCard = ({
@@ -10,6 +11,8 @@ const RestaurantCard = ({
   costForTwo,
   avgRatingString,
 }) => {
+  const { loggedInUser } = useContext(userContext);
+
   return (
     <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
       <img
@@ -31,6 +34,7 @@ const RestaurantCard = ({
         <h4>{sla?.lastMileTravelString ?? "2.0 km"}</h4>
 
         <h4>{costForTwo ?? "₹200 for two"}</h4>
+        <h5>{loggedInUser}</h5>
       </span>
     </div>
   );

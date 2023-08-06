@@ -30,7 +30,7 @@ class UserClass extends React.Component {
 
     return (
       <div className="user-card">
-        <img src={avatar_url} alt="" />
+        <img src={avatar_url} className="w-40" alt="" />
         <h2>Name: {name}</h2>
         <h3>Location: {location}</h3>
         <h4>Contact: @saurabh.rgt</h4>

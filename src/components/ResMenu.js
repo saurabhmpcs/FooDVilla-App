@@ -8,7 +8,7 @@ const ResMenu = () => {
   const { resId } = useParams();
   const [resInfo, setResInfo] = useState(null);
 
-  const [showIndex, setShowIndex] = useState();
+  const [showIndex, setShowIndex] = useState(0);
 
   useEffect(() => {
     fetchMenu();
@@ -53,7 +53,7 @@ const ResMenu = () => {
           key={category?.card?.card?.title}
           data={category?.card?.card}
           showItems={index === showIndex ? true : false}
-          setShowIndex={() => setShowIndex(index)}
+          setShowIndex={() => setShowIndex}
         />
       ))}
     </div>

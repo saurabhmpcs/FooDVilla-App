@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 function filterData(searchText, restaurants) {
-  const resFilterData = restaurants.filter((restaurant) =>
+  const allRestaurants = restaurants.filter((restaurant) =>
     restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
   );
-  return resFilterData;
+  return allRestaurants;
 }
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
   // const filterTopResHandler = () => {
   //   if (!topResFilterStatus) {
   //     setResListLocal(resList.filter((res) => res.info.avgRating >= 4));
@@ -84,13 +84,13 @@ const Body = () => {
           className="px-4 py-2 bg-green-100 m-4 rounded-lg"
           onClick={() => {
             // user click on button searchData function is called
-            searchData(searchText, allRestaurants);
+            filterData(searchText, allRestaurants);
           }}
         >
           Search
         </button>
       </div>
-      {errorMessage && <div className="error-container">{errorMessage}</div>}
+      {/* {errorMessage && <div className="error-container">{errorMessage}</div>} */}
       {/* if restaurants data is not fetched then display Shimmer UI after the fetched data display restaurants cards */}
       {allRestaurants?.length === 0 ? (
         <Shimmer />
