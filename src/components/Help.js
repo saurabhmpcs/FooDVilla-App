@@ -1,7 +1,7 @@
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { useState } from "react";
 
-FAQ = [
+const FAQ = [
   {
     id: 473,
     title: "Can I edit my order?",
