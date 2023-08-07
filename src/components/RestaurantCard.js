@@ -9,33 +9,44 @@ const RestaurantCard = ({
   areaName,
   sla,
   costForTwo,
-  avgRatingString,
+  avgRating,
 }) => {
   const { loggedInUser } = useContext(userContext);
 
   return (
-    <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
+    <div className="flex flex-col overflow-hidden m-3 p-3 w-60  rounded-sm hover:shadow-xl duration-300 font-poppins bg-white shadow-sm ">
       <img
-        className="rounded-lg"
+        className="w-full border rounded-lg"
         src={
           "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
           cloudinaryImageId
         }
       />
-      <h3 className="font-bold py-4 text-lg">{name}</h3>
-      <h5>{cuisines.join(", ")}</h5>
-      <h5>{areaName}</h5>
-      <span>
-        <h4>
-          <i className="fa-solid fa-star"></i>
-          {avgRatingString}
-        </h4>
-
-        <h4>{sla?.lastMileTravelString ?? "2.0 km"}</h4>
-
-        <h4>{costForTwo ?? "₹200 for two"}</h4>
-        <h5>{loggedInUser}</h5>
+      <span className="block font-bold text-md mt-3 ">
+        {name?.length > 20 ? name.slice(0, 20) + "..." : name}
       </span>
+      <span className="mt-3 text-gray-600 text-xs">{cuisines?.join(", ")}</span>
+      <div className="mt-3 mb-3 flex items-center justify-between">
+        <span
+          className="w-12 text-center border rounded-md text-white text-xs mr-2"
+          style={
+            avgRating >= 4
+              ? { backgroundColor: "#1db458" }
+              : avgRating >= 3
+              ? { backgroundColor: "#DB7C38" }
+              : avgRating === "--"
+              ? { backgroundColor: "#1db458" }
+              : { backgroundColor: "#E31837" }
+          }
+        >
+          {avgRating} &#9733;
+        </span>
+        <span className="text-xs">{costForTwo}</span>
+        <span className="text-xs ">
+          {" "}
+          {sla?.lastMileTravelString ?? "2.0 km"}
+        </span>
+      </div>
     </div>
   );
 };
@@ -62,3 +73,6 @@ const RestaurantCard = ({
 // };
 
 export default RestaurantCard;
+
+{
+}

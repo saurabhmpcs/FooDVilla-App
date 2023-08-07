@@ -3,7 +3,7 @@ import Header from "./components/Header";
 
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./components/About";
-import Contact from "./components/Contact";
+import Contact from "./components/Help";
 import ErrorPage from "./components/ErrorPage";
 // import Grocery from "./components/Grocery";s
 import { lazy, Suspense, useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import Shimmer from "./components/Shimmer";
 import Body from "./components/Body";
 import ResMenu from "./components/ResMenu";
 import userContext from "./utils/UserContext";
+import Help from "./components/Help";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -49,8 +50,8 @@ const appRouter = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/contact",
-        element: <Contact />,
+        path: "/help",
+        element: <Help />,
       },
       {
         path: "/grocery",
