@@ -5,11 +5,9 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import ErrorPage from "./components/ErrorPage";
-import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocery from "./components/Grocery";s
 import { lazy, Suspense, useEffect, useState } from "react";
 import Shimmer from "./components/Shimmer";
-import NewBody from "./components/NewBody";
 import Body from "./components/Body";
 import ResMenu from "./components/ResMenu";
 import userContext from "./utils/UserContext";

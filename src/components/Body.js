@@ -4,12 +4,12 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
-function filterData(searchText, restaurants) {
-  const allRestaurants = restaurants.filter((restaurant) =>
-    restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-  return allRestaurants;
-}
+// function filterData(searchText, restaurants) {
+//   const allRestaurants = restaurants.filter((restaurant) =>
+//     restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+//   );
+//   return allRestaurants;
+// }
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -59,6 +59,7 @@ const Body = () => {
 
       // call the checkJsonData() function which return Swiggy Restaurant data
       const resData = await checkJsonData(json);
+      console.log(resData);
 
       // update the state variable restaurants with Swiggy API data
       setAllRestaurants(resData);
@@ -72,26 +73,38 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="m-4 p-4">
-        <input
-          type="text"
-          className="border border-solid border-black"
-          value={searchText}
-          // update the state variable searchText when we typing in input box
-          onChange={(e) => setSearchText(e.target.value)}
-        ></input>
-        <button
-          className="px-4 py-2 bg-green-100 m-4 rounded-lg"
-          onClick={() => {
-            // user click on button searchData function is called
-            filterData(searchText, allRestaurants);
-          }}
-        >
-          Search
-        </button>
+      <div className="hero-section  relative h-[30rem] flex  items-center w-full">
+        <img
+          src="https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png"
+          className="h-full w-full absolute object-cover "
+          alt="food background image"
+        ></img>
+
+        <div className="my-12 flex flex-grow items-center justify-center  z-[2] ">
+          <div className="flex justify-between w-1/3 border border-slate-600 border-1 focus:w-2/3 rounded-lg overflow-hidden">
+            <input
+              type="text"
+              className="p-3 grow h-12 w-[90%] focus:outline-none"
+              value={searchText}
+              // update the state variable searchText when we typing in input box
+              onChange={(e) => setSearchText(e.target.value)}
+            ></input>
+            <button
+              className="p-3 bg-green-200"
+              onClick={() => {
+                const filteredRestaurant = allRestaurants.filter((res) =>
+                  res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                );
+
+                setFilteredRestaurants(filteredRestaurant);
+              }}
+            >
+              Search
+            </button>
+          </div>
+        </div>
       </div>
-      {/* {errorMessage && <div className="error-container">{errorMessage}</div>} */}
-      {/* if restaurants data is not fetched then display Shimmer UI after the fetched data display restaurants cards */}
+
       {allRestaurants?.length === 0 ? (
         <Shimmer />
       ) : (
