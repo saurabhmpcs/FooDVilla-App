@@ -28,9 +28,12 @@ const AppLayout = () => {
 
   return (
     <userContext.Provider value={{ loggedInUser: userName }}>
-      <div className="app">
+      <div className="app ">
         <Header />
         <Outlet />
+        <div className="footer text-center text-sm font-medium font-poppins h-10 flex justify-center items-center bg-slate-900 text-white mt-">
+          <h1>© 2023 made by Saurabh Singh 🎉</h1>
+        </div>
       </div>
     </userContext.Provider>
   );

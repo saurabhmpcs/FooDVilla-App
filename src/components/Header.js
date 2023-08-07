@@ -21,7 +21,7 @@ const Header = () => {
       </div>
 
       <div className="flex items-center ">
-        <ul className="flex p-3 m-2 ">
+        <ul className="flex p-3 m-2 font-medium">
           <li className="p-4">Online Status: {onlineStatus ? "✅" : "🔴"}</li>
 
           <li className="p-4">
@@ -47,8 +47,6 @@ const Header = () => {
           >
             {btnNameReact}
           </button>
-
-          <li className="p-4 font-bold">{loggedInUser}</li>
         </ul>
       </div>
     </div>

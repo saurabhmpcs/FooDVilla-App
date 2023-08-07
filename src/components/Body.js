@@ -69,6 +69,15 @@ const Body = () => {
     }
   }
 
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you're offline!! Please check your internet connection;
+      </h1>
+    );
+
   return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
