@@ -12,6 +12,9 @@ import Body from "./components/Body";
 import ResMenu from "./components/ResMenu";
 import userContext from "./utils/UserContext";
 import Help from "./components/Help";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -27,15 +30,17 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <userContext.Provider value={{ loggedInUser: userName }}>
-      <div className="app ">
-        <Header />
-        <Outlet />
-        <div className="footer text-center text-sm font-medium font-poppins h-10 flex justify-center items-center bg-slate-900 text-white mt-">
-          <h1>© 2023 made by Saurabh Singh 🎉</h1>
+    <Provider store={appStore}>
+      <userContext.Provider value={{ loggedInUser: userName }}>
+        <div className="app ">
+          <Header />
+          <Outlet />
+          <div className="footer text-center text-sm font-medium font-poppins h-10 flex justify-center items-center bg-slate-900 text-white mt-">
+            <h1>© 2023 made by Saurabh Singh 🎉</h1>
+          </div>
         </div>
-      </div>
-    </userContext.Provider>
+      </userContext.Provider>
+    </Provider>
   );
 };
 
@@ -67,6 +72,10 @@ const appRouter = createBrowserRouter([
       {
         path: "restaurant/:resId",
         element: <ResMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <ErrorPage />,
